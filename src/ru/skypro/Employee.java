@@ -82,15 +82,101 @@ public class Employee {
 
     public static void maxSalary(Employee emp[]) {
         int max = emp[0].salary;
-        int maxIndex = 0;
         for (int i = 1; i < counter; i++) {
             if(emp[i].salary > max){
                 max = emp[i].salary;
-                maxIndex = i;
             }
         }
         System.out.println(max);
     }
+
+    public static void indexSalary(int department, Employee emp[]) {
+        for (int i = 0; i < counter; i++) {
+            emp[i].salary = (emp[i].salary * department) + emp[i].salary;
+        }
+    }
+
+    public static void departmentSalaryMin(int department, Employee emp[]) {
+        int min = 1000000000;
+        for (int i = 0; i < counter; i++) {
+            if(emp[i].department == department){
+                if(emp[i].salary < min){
+                    min = emp[i].salary;
+                }
+            }
+        }
+        System.out.println(min);
+    }
+
+    public static void departmentSalaryMax(int department, Employee emp[]) {
+        int max = 0;
+        for (int i = 0; i < counter; i++) {
+            if(emp[i].department == department){
+                if(emp[i].salary > max){
+                    max = emp[i].salary;
+                }
+            }
+        }
+        System.out.println(max);
+    }
+
+    public static void departmentSalaryAll(int department, Employee emp[]) {
+        int salary = 0;
+        for (int i = 0; i < counter; i++) {
+            if (emp[i].department == department){
+                salary += emp[i].salary;
+            }
+        }
+        System.out.println(salary);
+    }
+
+
+
+    public static void departmentSalaryMean(int department, Employee emp[]) {
+        int salary = 0;
+        int count = 0;
+        for (int i = 0; i < counter; i++) {
+            if (emp[i].department == department){
+                salary += emp[i].salary;
+                count++;
+            }
+        }
+        System.out.println(salary/count);
+    }
+
+    public static void departmentSalaryIndex(int percent,int department, Employee emp[]) {
+        for (int i = 0; i < counter; i++) {
+            if (emp[i].department == department) {
+                emp[i].salary = (emp[i].salary * percent) + emp[i].salary;
+            }
+        }
+    }
+
+    public static void departmentAllStaff(int department, Employee emp[]) {
+        for (int i = 0; i < counter; i++) {
+            if (emp[i].department == department) {
+                System.out.println("Полное имя:" + emp[i].fullName+ "; " + "Зарпалата:"+ emp[i].salary +"; " + "id:" + emp[i].id);
+            }
+        }
+    }
+
+    public static void findMinDepartmentSalary(int department, int salary, Employee emp[]) {
+        for (int i = 0; i < counter; i++) {
+            if (emp[i].department == department && emp[i].salary < salary) {
+                    System.out.println("Полное имя:" + emp[i].fullName + "; " + "Зарпалата:" + emp[i].salary + "; " + "id:" + emp[i].id);
+            }
+        }
+    }
+
+    public static void findMaxDepartmentSalary(int department, int salary, Employee emp[]) {
+        for (int i = 0; i < counter; i++) {
+            if (emp[i].department == department && emp[i].salary > salary) {
+                System.out.println("Полное имя:" + emp[i].fullName + "; " + "Зарпалата:" + emp[i].salary + "; " + "id:" + emp[i].id);
+            }
+        }
+    }
+
+
 
 
     @Override
